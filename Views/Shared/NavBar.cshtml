@@ -1,0 +1,49 @@
+@* <link rel="stylesheet" href="~/css/Styles.css" type="text/css" media="all">  *@
+
+<div class = "row">
+  <div class = "col-md-2">
+    <img src='~/img/logo.png' alt="SweetCakes Logo" height="165px" width="165px" class="logo">
+  </div>
+  <div class = "col-md-3">
+    <h1>Recipe</h1>
+    <h1>Box</h1>
+  </div>
+  <div class = "col-md-3">
+    <form action="/search" method = "get">
+        <br>
+        <input type="text" name="search">
+        <br>
+        <button type="submit">Search Our Bakery</button>
+        <br>
+        @Html.RadioButton("searchParam", "Flavors")
+        <label for="searchParam">Search Flavors</label>
+        <br>
+        @Html.RadioButton("searchParam", "Menu")
+        <label for="searchParam">Search Menu Items</label>
+      </form>
+  </div>
+</div>
+<div class="row">
+  <div class = "col-md-8">
+      <ul class="nav nav-tabs" class="nav">
+      <li role="presentation"><a href="/">Home</a></li>
+      <li role="presentation"><a href="/treats">SweetCakes Menu</a></li>
+      <li role="presentation"><a href='/flavors'>Menu By Flavor</a></li>
+
+      @if (User.Identity.IsAuthenticated)
+      {
+        <li role="presentation"><a href="/treats/create">Add New Menu Item</li>
+        <li role="presentation"><a href="/flavors/create">Add New Flavor</li>
+        <input type="submit" class="btn btn-default" value="Log out" />
+      }
+      else 
+      {
+      <li role="presentation"><a href='/account/login'>Log In</a></li>
+      <li role="presentation"><a href='/account/register'>Create An Account</a></li>
+      }
+    </ul>
+  </div>
+</div>
+    
+
+
