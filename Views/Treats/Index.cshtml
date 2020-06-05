@@ -1,0 +1,45 @@
+@{
+  Layout = "_Layout";
+}
+
+@using SweetCakes.Models;
+@model IEnumerable<SweetCakes.Models.Treat>
+
+<h2>SweetCakes Menu</h2>
+
+@* <form action="/sort" method = "get">
+  @Html.RadioButton("sortParam", "Rating")
+  <label for="sortParam">Sort by Rating</label>
+  @Html.RadioButton("sortParam", "Minutes")
+  <label for="sortParam">Sort by Prep Time</label>
+  <button type="submit">Sort My RecipeBox</button>
+</form> *@
+
+@if (Model.Any())
+{
+  <ul>
+    @foreach (Treat treat in Model)
+    {
+      <h5>@Html.ActionLink($"{treat.Name}", "Details", new { id = treat.TreatId })</h5>
+      @* <ul>
+        <li>Rating: @Html.DisplayFor(modelRecipe => recipe.Rating)</li>
+        <li>Prep Time: @Html.DisplayFor(modelRecipe => recipe.Minutes) minutes</li>
+      </ul> *@
+    }
+  </ul>
+} 
+else
+{
+  <h3>Oops, we haven't updated our menu!</h3>
+  @if (User.Identity.IsAuthenticated)
+  {
+    <p>@Html.ActionLink("Add new Treat", "Create")Create a new menu item</p>
+  }
+  else 
+  {
+    <h4>@Html.ActionLink("Account", "Login")Log in to create new menu items.</h4>
+  }
+}
+
+
+<p>@Html.ActionLink("Home", "Index", "Home")</p>

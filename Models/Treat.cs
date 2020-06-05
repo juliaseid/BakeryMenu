@@ -13,7 +13,7 @@ namespace SweetCakes.Models
     public int TreatId { get; set; }
     public string Name { get; set; }
     public int Price { get; set; }
-    // public virtual ApplicationUser User { get; set; }
+    public virtual ApplicationUser User { get; set; }
     public ICollection<FlavorTreat> Flavors { get; }
   }
 }
