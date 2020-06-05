@@ -17,7 +17,7 @@ else
   <ul>
   @foreach(var join in Model.Treats)
   {
-    <li>@join.Treat.Name</li>
+    <li>@join.Treat.Name, $ @join.Treat.Price, @Html.ActionLink("See other flavors", "Details", "Treats", new {id = join.Treat.TreatId})</li>
   }
   </ul>
 }
@@ -34,4 +34,5 @@ else
   <h4>@Html.ActionLink("Log in", "Login", "Account") to update menu with new Flavors and Menu Items.</h4>
 }
 
-<p>@Html.ActionLink("Back to Flavors", "Index")</p>
+<p>@Html.ActionLink("Back to Flavor List", "Index")</p>
+<p>@Html.ActionLink("See All Menu Items", "Index", "Treats")</p>

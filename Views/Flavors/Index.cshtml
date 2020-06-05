@@ -14,12 +14,14 @@
 
 @foreach (Flavor flav in Model)
 {
-  <p>@Html.ActionLink($"{flav.FlavorName}", "Details", new { id = flav.FlavorId })</p>
+  <ul>
+    <li>@Html.ActionLink($"{flav.FlavorName}", "Details", new { id = flav.FlavorId })</li>
+  </ul>
 }
-
+<br>
 @if (User.Identity.IsAuthenticated)
   {
-    <p>@Html.ActionLink("Add new Flavor", "Create")Create a new flavor category</p>
+    <p>@Html.ActionLink("Create a New Flavor", "Create")</p>
   }
   else 
   {

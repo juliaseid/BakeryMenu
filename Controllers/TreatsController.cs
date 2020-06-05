@@ -85,12 +85,9 @@ namespace SweetCakes.Controllers
 
     [HttpPost]
     [Authorize]
-    public ActionResult AddTag(Treat treat, int FlavorId)
+    public ActionResult AddFlavor(Treat treat, int FlavorId)
     {
-      if (FlavorId != 0)
-      {
-        _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
-      }
+      _db.FlavorTreat.Add(new FlavorTreat() { FlavorId = FlavorId, TreatId = treat.TreatId });
       _db.Entry(treat).Collection(t => t.Flavors).IsModified = true;
       _db.SaveChanges();
       return RedirectToAction("Index");
