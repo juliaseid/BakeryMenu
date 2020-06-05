@@ -7,6 +7,7 @@
 @if (User.Identity.IsAuthenticated)
   {
       <h5>Hello @User.Identity.Name!</h5>
+      
       <p>@Html.ActionLink("See all Menu Items", "Index", "Treats")</p>
       <p>@Html.ActionLink("See all Flavors", "Index", "Flavors")</p>
       @using (Html.BeginForm("LogOff", "Account"))
