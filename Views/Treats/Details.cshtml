@@ -1,0 +1,35 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetCakes.Models.Treat
+
+<h3>@Html.DisplayNameFor(model => model.Name): @Html.DisplayFor(model => model.Name)</h3>
+
+
+  <ul> Flavors:
+    <li>Plain</li>
+    @foreach(var join in Model.Flavors)
+    {
+      <li>@join.Flavor.FlavorName</li>
+    }
+  </ul>
+  <h4>Price: $@Html.DisplayFor(model => model.Price) </h4>
+
+  @if (User.Identity.IsAuthenticated)
+  {
+    <p>@Html.ActionLink("Add A New Flavor for this Item", "AddFlavor", new { id = Model.TreatId })</p>
+    <p>@Html.ActionLink("Edit this Menu Item", "Edit", new { id = Model.TreatId })</p>
+    <p>@Html.ActionLink("Delete Menu Item", "Delete", new { id = Model.TreatId })</p>
+    <br>
+    <input type="submit" class="btn btn-default" value="Log out" />
+  }
+  else 
+  {
+    <h4>@Html.ActionLink("Account", "Login")Log in to update menu with new Items and Flavors.</h4>
+  }
+  
+<br>
+
+<p>@Html.ActionLink("Back to Menu", "Index")</p>
+

@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetCakes.Models.Treat
+
+<h4>Add a new Treat to the Menu</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.LabelFor(model => model.Name)
+    @Html.TextBoxFor(model => model.Name)
+    <br>
+
+    @Html.LabelFor(model => model.Price)
+    @Html.TextBoxFor(model => model.Price, new { @type = "number" })
+    <br>
+
+    @Html.Label("Add Flavors")
+    @Html.DropDownList("FlavorId")
+    <br>
+
+    <input type="submit" value="Add new Treat" class="btn btn-default" />
+}
+<p>@Html.ActionLink("Show All Menu Items", "Index")</p>
+
+<input type="submit" class="btn btn-default" value="Log out" />
