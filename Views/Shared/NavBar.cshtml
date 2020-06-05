@@ -23,18 +23,21 @@
       </form>
   </div>
 </div>
-<ul class="nav nav-tabs" class="nav">
 <div class="row">
   <div class = "col-md-2">    
+    <ul class="nav nav-tabs">
       <li role="presentation"><a href="/">Home</a></li>
       <li role="presentation"><a href="/treats">SweetCakes Menu</a></li>
       <li role="presentation"><a href='/flavors'>Menu By Flavor</a></li>
-    </div>
+    </ul>
+  </div>
       @if (User.Identity.IsAuthenticated)
       {
         <div class = "col-md-4">
-          <li role="presentation"><a href="/treats/create">Add New Menu Item</li>
-          <li role="presentation"><a href="/flavors/create">Add New Flavor</li>
+          <ul class = "nav nav-tabs">
+            <li role="presentation"><a href="/treats/create/">Add New Menu Item</a></li>
+            <li role="presentation"><a href="/flavors/create/">Add New Flavor</a></li>
+          </ul>
         </div>
         <div class = "col-md-2">
           @using (Html.BeginForm("LogOff", "Account"))
@@ -46,11 +49,12 @@
       else 
       {
       <div class = "col-md-4">
-        <li role="presentation"><a href='/account/login'>Log In</a></li>
-        <li role="presentation"><a href='/account/register'>Create An Account</a></li>
+        <ul class = "nav nav-tabs">
+          <li role="presentation"><a href='/account/login'>Log In</a></li>
+          <li role="presentation"><a href='/account/register'>Create An Account</a></li>
+        </ul> 
       </div>
       }
-    </ul>
   </div>
 </div>
     
