@@ -54,7 +54,7 @@ namespace SweetCakes.Controllers
 
     public ActionResult Edit(int id)
     {
-      var thisFlav = _db.Flavors.FirstOrDefault(flav => flav.FlavId == id);
+      var thisFlav = _db.Flavors.FirstOrDefault(flav => flav.FlavorId == id);
       return View(thisFlav);
     }
 
