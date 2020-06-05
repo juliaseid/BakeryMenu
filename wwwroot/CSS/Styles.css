@@ -1,0 +1,32 @@
+.bodyText
+{
+  width: 75%;
+  margin-left: 180px;
+  margin-right: 180px;
+  margin-top: 40px;
+  border-color: rgb(105, 95, 168);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 6px;
+  padding: 8px;
+}
+
+body 
+{
+  background-color: rgb(252, 250, 225);
+  font-family: 'Trebuchet MS', 'Lucida Sans Unicode', 'Lucida Grande', 'Lucida Sans', Arial, sans-serif;
+}
+
+img 
+{
+  border-color: rgb(105, 95, 168);
+  border-width: 2px;
+  border-style: solid;
+  border-radius: 6px;
+}
+
+h1
+{
+  font-size: 60px;
+  color: darkslateblue;
+}

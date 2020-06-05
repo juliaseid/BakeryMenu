@@ -23,25 +23,32 @@
       </form>
   </div>
 </div>
+<ul class="nav nav-tabs" class="nav">
 <div class="row">
-  <div class = "col-md-10">
-      <ul class="nav nav-tabs" class="nav">
+  <div class = "col-md-2">    
       <li role="presentation"><a href="/">Home</a></li>
       <li role="presentation"><a href="/treats">SweetCakes Menu</a></li>
       <li role="presentation"><a href='/flavors'>Menu By Flavor</a></li>
-
+    </div>
       @if (User.Identity.IsAuthenticated)
       {
-        <li role="presentation"><a href="/treats/create">Add New Menu Item</li>
-        <li role="presentation"><a href="/flavors/create">Add New Flavor</li>
+        <div class = "col-md-4">
+          <li role="presentation"><a href="/treats/create">Add New Menu Item</li>
+          <li role="presentation"><a href="/flavors/create">Add New Flavor</li>
+        </div>
         <div class = "col-md-2">
-        <input type="submit" class="btn btn-default" value="Log out" />
+          @using (Html.BeginForm("LogOff", "Account"))
+          {
+              <input type="submit" class="btn btn-default" value="Log out" />
+          }
         </div>
       }
       else 
       {
-      <li role="presentation"><a href='/account/login'>Log In</a></li>
-      <li role="presentation"><a href='/account/register'>Create An Account</a></li>
+      <div class = "col-md-4">
+        <li role="presentation"><a href='/account/login'>Log In</a></li>
+        <li role="presentation"><a href='/account/register'>Create An Account</a></li>
+      </div>
       }
     </ul>
   </div>
