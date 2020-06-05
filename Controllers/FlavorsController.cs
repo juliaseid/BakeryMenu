@@ -33,6 +33,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult> Create(Flavor flav)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -59,6 +60,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult> Edit(Flavor flav)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -76,6 +78,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost, ActionName("Delete")]
+    [Authorize]
     public async Task<ActionResult> DeleteConfirmed(int id, Flavor flav)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -86,5 +89,27 @@ namespace SweetCakes.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
+
+    public ActionResult AddTreat(int id)
+    {
+      var thisFlavor = _db.Flavors.FirstOrDefault(flavor => flavor.FlavorId == id);
+      ViewBag.TreatId = new SelectList(_db.Treats, "TreatId", "Name");
+      return View(thisFlavor);
+    }
+
+    [HttpPost]
+    [Authorize]
+    public ActionResult AddFlavor(Flavor flav, int TreatId)
+    {
+      if (TreatId != 0)
+      {
+        _db.FlavorTreat.Add(new FlavorTreat() { TreatId = TreatId, FlavorId = flav.FlavorId });
+      }
+      _db.Entry(flav).Collection(f => f.Treats).IsModified = true;
+      _db.SaveChanges();
+      return RedirectToAction("Index");
+    }
+
+
   }
 }

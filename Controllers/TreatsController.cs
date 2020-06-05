@@ -11,7 +11,6 @@ using SweetCakes.Models;
 
 namespace SweetCakes.Controllers
 {
-  [Authorize]
   public class TreatsController : Controller
   {
     private readonly SweetCakesContext _db;
@@ -34,6 +33,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public async Task<ActionResult> Create(Treat treat, int FlavorId)
     {
       var userId = this.User.FindFirst(ClaimTypes.NameIdentifier)?.Value;
@@ -64,6 +64,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public ActionResult Edit(Treat treat, int FlavorId)
     {
       if (FlavorId != 0)
@@ -83,6 +84,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public ActionResult AddTag(Treat treat, int FlavorId)
     {
       if (FlavorId != 0)
@@ -95,6 +97,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost]
+    [Authorize]
     public ActionResult DeleteFlavor(int joinId)
     {
       var joinEntry = _db.FlavorTreat.FirstOrDefault(entry => entry.FlavorTreatId == joinId);
@@ -110,6 +113,7 @@ namespace SweetCakes.Controllers
     }
 
     [HttpPost, ActionName("Delete")]
+    [Authorize]
     public ActionResult DeleteConfirmed(int id)
     {
       var thisTreat = _db.Treats.FirstOrDefault(treats => treats.TreatId == id);

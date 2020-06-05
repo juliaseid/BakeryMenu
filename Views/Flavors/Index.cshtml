@@ -10,21 +10,21 @@
 @if (@Model.Count == 0)
 {
   <h5>Everything is plain right now.</h5>
-
-  @if (User.Identity.IsAuthenticated)
-  {
-    <p>@Html.ActionLink("Add new Flavor", "Create")Create a new flavor category</p>
-  }
-  else 
-  {
-    <h4>@Html.ActionLink("Account", "Login")Log in to create new flavors.</h4>
-  }
 } 
 
 @foreach (Flavor flav in Model)
 {
   <p>@Html.ActionLink($"{flav.FlavorName}", "Details", new { id = flav.FlavorId })</p>
 }
+
+@if (User.Identity.IsAuthenticated)
+  {
+    <p>@Html.ActionLink("Add new Flavor", "Create")Create a new flavor category</p>
+  }
+  else 
+  {
+    <h4>@Html.ActionLink("Log in", "Login", "Account") to create new flavors.</h4>
+  }
 
 
 <p>@Html.ActionLink("Home", "Index", "Home")</p>

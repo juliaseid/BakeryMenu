@@ -21,7 +21,17 @@ else
   }
   </ul>
 }
+@if (User.Identity.IsAuthenticated)
+{
+  <p>@Html.ActionLink("Add A New Menu Item in this Flavor", "AddTreat", new { id = Model.FlavorId })</p>
+  <p>@Html.ActionLink("Edit this Flavor", "Edit", new { id = Model.FlavorId })</p>
+  <p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>
+  <br>
+  <input type="submit" class="btn btn-default" value="Log out" />
+}
+else 
+{
+  <h4>@Html.ActionLink("Log in", "Login", "Account") to update menu with new Flavors and Menu Items.</h4>
+}
 
 <p>@Html.ActionLink("Back to Flavors", "Index")</p>
-<p>@Html.ActionLink("Edit Flavor", "Edit", new { id = Model.FlavorId })</p>
-<p>@Html.ActionLink("Delete Flavor", "Delete", new { id = Model.FlavorId })</p>

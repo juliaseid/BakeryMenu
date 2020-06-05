@@ -33,11 +33,11 @@ else
   <h3>Oops, we haven't updated our menu!</h3>
   @if (User.Identity.IsAuthenticated)
   {
-    <p>@Html.ActionLink("Add new Treat", "Create")Create a new menu item</p>
+    <p>@Html.ActionLink("Add New Menu Item", "Create")Create a new menu item</p>
   }
   else 
   {
-    <h4>@Html.ActionLink("Account", "Login")Log in to create new menu items.</h4>
+    <h4>@Html.ActionLink("Log in", "Login", "Account")to create new menu items.</h4>
   }
 }
 

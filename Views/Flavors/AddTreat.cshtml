@@ -1,0 +1,22 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetCakes.Models.Flavor
+
+<h4>Add a New Menu Item in this Flavor: @Html.DisplayFor(model => model.FlavorName)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.FlavorName)
+
+    @Html.Label("Select Menu Item")
+    @Html.DropDownList("TreatId")
+
+    <input type="submit" value="Save" />
+}
+
+<p>@Html.ActionLink("Create New Flavor", "Create")</p>
+<p>@Html.ActionLink("Create New Menu Item", "Create", "Treats")</p>
+<p>@Html.ActionLink("Back to Flavor Menu", "Index")</p>
+<p>@Html.ActionLink("Home", "Index", "Home")</p>
