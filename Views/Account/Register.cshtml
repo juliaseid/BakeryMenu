@@ -6,8 +6,7 @@
 
 @model RegisterViewModel
 
-<h2>Register a new user</h2>
-<hr />
+<h4>Register a new user</h4>
 
 @if (User.Identity.IsAuthenticated)
   {
@@ -21,6 +20,9 @@
   {
     @using (Html.BeginForm("Register", "Account", FormMethod.Post))
     {
+        @Html.LabelFor(user => user.UserName)
+        @Html.TextBoxFor(user => user.UserName)
+        
         @Html.LabelFor(user => user.Email)
         @Html.TextBoxFor(user=> user.Email)
 
