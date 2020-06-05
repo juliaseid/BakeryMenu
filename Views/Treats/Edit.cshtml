@@ -1,0 +1,27 @@
+@{
+  Layout = "_Layout";
+}
+
+@model SweetCakes.Models.Treat
+
+<h4>Edit this Menu Item: @Html.DisplayFor(model => model.Name)</h4>
+
+@using (Html.BeginForm())
+{
+    @Html.HiddenFor(model => model.TreatId)
+
+    @Html.LabelFor(model => model.Name)
+    @Html.EditorFor(model => model.Name)
+
+    @Html.Label("Add Flavors")
+    @Html.DropDownList("FlavorId")
+
+    @Html.LabelFor(model => model.Price)
+    @Html.EditorFor(model => model.Price, new { @type = "number"})
+
+    <input type="submit" value="Save" />
+}
+
+
+
+<p>@Html.ActionLink("Back to Menu", "Index")</p>
