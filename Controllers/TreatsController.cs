@@ -118,58 +118,5 @@ namespace SweetCakes.Controllers
       _db.SaveChanges();
       return RedirectToAction("Index");
     }
-
-    // [HttpGet("/search")]
-    // public ActionResult Search(string search, string searchParam)
-    // {
-
-    //   if (!string.IsNullOrEmpty(search))
-    //   {
-    //     if (searchParam == "Tags")
-    //     {
-    //       var thisTag = _db.Tags
-    //       .Include(tag => tag.Recipes)
-    //       .ThenInclude(join => join.Recipe)
-    //       .FirstOrDefault(tag => tag.Word == search);
-    //       return View(thisTag.Recipes);
-
-    //     }
-    //     else if (searchParam == "Name")
-    //     {
-    //       var model = from r in _db.Recipes select r;
-    //       model = model.Where(r => r.Name.Contains(search));
-    //       List<Recipe> matches = model.ToList();
-    //       return View(matches);
-    //     }
-    //     else
-    //     {
-    //       var model = from m in _db.Recipes select m;
-    //       List<Recipe> allRecipes = new List<Recipe> { };
-    //       allRecipes = model.ToList();
-    //       return View(allRecipes);
-    //     }
-    //   }
-    //   else
-    //   {
-    //     return RedirectToAction("Index");
-    //   }
-    // }
-    // [HttpGet("/sort")]
-    // public ActionResult Sort(string sortParam)
-    // {
-    //   List<Recipe> model = _db.Recipes.ToList();
-    //   if (sortParam == "Rating")
-    //   {
-    //     model = model.OrderByDescending(r => r.Rating).ToList();
-    //   }
-    //   else
-    //   {
-    //     model = model.OrderBy(r => r.Minutes).ToList();
-    //   }
-    //   return View(model);
-    // }
-
-
-
   }
 }
